@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <p>
+    <h1>Задание 1</h1>
+    <h3>Для расчета квадратного уравнения введите его корни</h3>
+    </p>
+</div>
+<div>
+    <form action="/task_1" method="POST" class="form">
+        <p><input type="text" placeholder="а" required name="a" style="height: 25px"><br></p>
+        <p><input type="text" placeholder="в" required name="b" style="height: 25px"><br></p>
+        <p><input type="text" placeholder="с" required name="c" style="height: 25px"><br></p>
+        <button>Рассчет</button>
+    </form>
+</div>
+<p>
+<hr>
+<p>
+<h1>Результаты расчетов</h1></p>
+
+{% if context.discriminant < 0 %}
+    <p><h3>Дискриминант введенных чисел равен D= {{ context.discriminant }}</h3></p>
+    <p><h3>Уравнение не имеет решений</p></h3>
+{% endif %}
+
+{% if context.discriminant == 0 %}
+    <p><h3>Дискриминант введенных чисел равен D= {{ context.discriminant }}</h3></p>
+    <p><h3>Решение уравнения имеет один корень X= {{ context.x }}</h3></p>
+{% endif %}
+
+{% if context.discriminant > 0 %}
+    <p><h3>Дискриминант введенных чисел равен D= {{ context.discriminant }}</h3></p>
+    <p><h3>Решение уравнения имеет 2 корня:</h3></p>
+    <p><h3> X1= {{ context.x1 }}</h3></p>
+    <p><h3> X2= {{ context.x2 }}</h3></p>
+{% endif %}
+</div>
+
+<div>
+    <a href="/">Назад</a>
+</div>
+</body>
+</html>
